@@ -6,7 +6,7 @@
 /*   By: rde-brui <rde-brui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/01/09 20:34:59 by rde-brui      #+#    #+#                 */
-/*   Updated: 2025/03/21 19:07:27 by rde-brui      ########   odam.nl         */
+/*   Updated: 2025/03/21 19:18:11 by rde-brui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 # include <stdlib.h>
 # include <stdbool.h>
-#include <sys/param.h>	//	MIN()
+
 /*
  * arr is the internal array
  * elem_size is the length of the data type (sizeof <type>)

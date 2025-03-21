@@ -6,10 +6,11 @@
 /*   By: rde-brui <rde-brui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/01/09 20:31:53 by rde-brui      #+#    #+#                 */
-/*   Updated: 2025/03/21 19:08:30 by rde-brui      ########   odam.nl         */
+/*   Updated: 2025/03/21 19:18:17 by rde-brui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <sys/param.h>	//	MIN()
 #include <dynarr.h>
 
 //	Static Functions
