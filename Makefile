@@ -40,7 +40,7 @@ all: $(NAME)
 
 #		Main target
 $(NAME): $(DYN_OBJS)
-	ar rcs $(NAME) $(DYN_OBJS)
+	@ar rcs $(NAME) $(DYN_OBJS)
 	@printf "$(CREATED)" $@ $(CUR_DIR)
 
 #		Compile .c files to .o files
