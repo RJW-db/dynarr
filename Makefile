@@ -1,15 +1,17 @@
 NAME			:=	dynarr.a
-COMPILER		:=	gcc
-RM				:=	rm -rf
 
-#		Compiler flags
-CFLAGS			+=	-MMD -MP
+#	Compiler and Flags
+COMPILER		:=	gcc
 CFLAGS			+=	-Wall -Wextra
-CFLAGS			+=	-Wunused -Wuninitialized -Wunreachable-code
-#		Werror cannot go together with fsanitize, because fsanitize won't work correctly.
 CFLAGS			+=	-Werror
-# CFLAGS			+=	-fsanitize=address
+CFLAGS			+=	-Wunreachable-code -Wpedantic -Wconversion -Wshadow
+CFLAGS			+=	-MMD -MP
 # CFLAGS			+=	-g
+#	Werror cannot go together with fsanitize, because fsanitize won't work correctly.
+# CFLAGS			+=	-fsanitize=address
+
+#	Utilities
+RM				:=	rm -rf
 
 #		Base Directories
 SRC_DIR			:=	src/
