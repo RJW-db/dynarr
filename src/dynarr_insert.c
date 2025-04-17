@@ -6,10 +6,11 @@
 /*   By: rde-brui <rde-brui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/01/09 20:31:53 by rde-brui      #+#    #+#                 */
-/*   Updated: 2025/03/21 19:05:56 by rde-brui      ########   odam.nl         */
+/*   Updated: 2025/04/17 15:22:21 by rde-brui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdint.h>
 #include <dynarr.h>
 
 //	Static functions
@@ -26,7 +27,7 @@ bool	dynarr_insert(t_dynarr *a, const void *element)
 	{
 		return (false);
 	}
-	da_memcpy(a->arr + (a->length * a->elem_size), element, a->elem_size);
+	da_memcpy((char *)a->arr + (a->length * a->elem_size), element, a->elem_size);
 	++a->length;
 	return (true);
 }
@@ -53,8 +54,8 @@ static bool	dynarr_grow(t_dynarr *a)
 static size_t	get_growth_factor(size_t length, size_t capacity)
 {
 	const size_t	thresholds[NUM_THRESHOLDS] = {1000000, 500000, 250000};
-	const float		factors[NUM_THRESHOLDS] = {1.25f, 1.5f, 1.75f};
-	size_t			i;
+	const float		factors[NUM_THRESHOLDS] = {1.25F, 1.5F, 1.75F};
+	uint8_t			i;
 
 	if (length < thresholds[0])
 	{
@@ -69,5 +70,5 @@ static size_t	get_growth_factor(size_t length, size_t capacity)
 		}
 		++i;
 	}
-	return (capacity * factors[i]);
+	return ((size_t)((double)capacity * factors[i]));
 }

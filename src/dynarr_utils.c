@@ -6,7 +6,7 @@
 /*   By: rde-brui <rde-brui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/01/09 20:31:53 by rde-brui      #+#    #+#                 */
-/*   Updated: 2025/03/21 19:18:17 by rde-brui      ########   odam.nl         */
+/*   Updated: 2025/04/17 15:25:56 by rde-brui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	*da_calloc(size_t nmemb, size_t size)
 	void			*ptr;
 
 	t = nmemb * size;
-	if (nmemb != 0 && size != 0 && t / nmemb != size)
+	if (nmemb != 0 && size != 0 && (t / nmemb) != size)
 		return (NULL);
 	ptr = malloc(t);
 	if (ptr == NULL)
@@ -42,7 +42,7 @@ void	*da_memcpy(void *dest, const void *src, size_t n)
 	const unsigned char	*tmp_src;
 	unsigned char		*tmp_dest;
 
-	if (!dest && !src)
+	if (dest == NULL && src == NULL)
 		return (NULL);
 	tmp_dest = (unsigned char *)dest;
 	tmp_src = (const unsigned char *)src;
@@ -53,7 +53,7 @@ void	*da_memcpy(void *dest, const void *src, size_t n)
 
 void	*da_free_ptr(void **ptr)
 {
-	if (ptr != NULL && *ptr != NULL)
+	if (*ptr != NULL)
 	{
 		free(*ptr);
 		*ptr = NULL;
@@ -83,14 +83,15 @@ void	*da_realloc(void **ptr, const size_t new_size, const size_t old_size)
 
 static void	*da_memmove(void *dest, const void *src, size_t n)
 {
-	char	*tmp;
+	const char	*src_char = src;
+	char		*tmp;
 
 	tmp = dest;
-	if (src > dest)
+	if (src_char > tmp)
 		while (n--)
-			*tmp++ = *(char *)src++;
-	if (dest > src)
+			*(tmp++) = *(src_char++);
+	if ((char *)dest > src_char)
 		while (n--)
-			*((char *)dest + n) = *((char *)src + n);
+			*((char *)dest + n) = *(src_char + n);
 	return (dest);
 }
