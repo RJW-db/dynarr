@@ -6,11 +6,11 @@
 /*   By: rde-brui <rde-brui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/01/09 20:31:53 by rde-brui      #+#    #+#                 */
-/*   Updated: 2025/04/17 15:19:52 by rde-brui      ########   odam.nl         */
+/*   Updated: 2026/03/06 15:36:35 by rde-brui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <dynarr.h>
+#include "dynarr.h"
 
 bool	dynarr_create(t_dynarr *ptr, size_t init_size, const size_t data_size)
 {
@@ -31,6 +31,7 @@ bool	dynarr_create(t_dynarr *ptr, size_t init_size, const size_t data_size)
 bool	dynarr_shrink_to_fit(t_dynarr *a)
 {
 	void	*ar;
+
 	if (a == NULL || a->arr == NULL)
 		return (false);
 	ar = da_realloc(&a->arr,

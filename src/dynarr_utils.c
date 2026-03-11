@@ -6,12 +6,12 @@
 /*   By: rde-brui <rde-brui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/01/09 20:31:53 by rde-brui      #+#    #+#                 */
-/*   Updated: 2025/04/17 15:25:56 by rde-brui      ########   odam.nl         */
+/*   Updated: 2026/03/06 15:35:32 by rde-brui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <sys/param.h>	//	MIN()
-#include <dynarr.h>
+#include "dynarr.h"
 
 //	Static Functions
 static void	*da_memmove(void *dest, const void *src, size_t n);

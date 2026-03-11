@@ -6,12 +6,12 @@
 /*   By: rde-brui <rde-brui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/01/09 20:31:53 by rde-brui      #+#    #+#                 */
-/*   Updated: 2025/04/17 15:22:21 by rde-brui      ########   odam.nl         */
+/*   Updated: 2026/03/06 15:36:12 by rde-brui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdint.h>
-#include <dynarr.h>
+#include "dynarr.h"
 
 //	Static functions
 static size_t	get_growth_factor(size_t length, size_t capacity);
@@ -27,7 +27,8 @@ bool	dynarr_insert(t_dynarr *a, const void *element)
 	{
 		return (false);
 	}
-	da_memcpy((char *)a->arr + (a->length * a->elem_size), element, a->elem_size);
+	da_memcpy(
+		(char *)a->arr + (a->length * a->elem_size), element, a->elem_size);
 	++a->length;
 	return (true);
 }
