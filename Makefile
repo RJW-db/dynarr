@@ -36,10 +36,6 @@ else ifneq ($(filter debug,$(MAKECMDGOALS)),)
 CFLAGS			+=	-g3 $(SANITIZERS) $(DEBUG_FLAGS) -fno-sanitize-recover=all
 endif
 
-ifneq ($(filter malloc,$(MAKECMDGOALS)),)
-CFLAGS			+=	-D MALLOC_WRAP=true
-endif
-
 PRINT_NO_DIR	:=	--no-print-directory
 RM				:=	rm -rf
 
