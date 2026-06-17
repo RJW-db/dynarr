@@ -12,14 +12,19 @@
 
 #include "dynarr.h"
 
-bool	dynarr_create(t_dynarr *ptr, size_t init_size, const size_t data_size)
+//	External helper functions
+void			*da_calloc(size_t nmemb, size_t size);
+void			*da_realloc(void **ptr, size_t new_size, size_t old_size);
+void			*da_free_ptr(void **ptr);
+
+bool	dynarr_create(t_dynarr *ptr, size_t init_size, size_t data_size)
 {
 	if (ptr == NULL || data_size == 0)
 		return (false);
 	ptr->arr = da_calloc(init_size, data_size);
 	if (ptr->arr == NULL)
 		return (false);
-	*(size_t *)&ptr->elem_size = data_size;
+	ptr->elem_size = data_size;
 	ptr->capacity = init_size;
 	ptr->length = 0;
 	return (true);
@@ -49,7 +54,7 @@ bool	dynarr_shrink_to_fit(t_dynarr *a)
 void	dynarr_free(t_dynarr *a)
 {
 	da_free_ptr(&a->arr);
-	*(size_t *)&a->elem_size = 0;
+	a->elem_size = 0;
 	a->capacity = 0;
 	a->length = 0;
 }

@@ -12,6 +12,11 @@
 
 #include <stdint.h>
 #include "dynarr.h"
+#define NUM_THRESHOLDS 3
+
+//	External helper functions
+void			*da_realloc(void **ptr, size_t new_size, size_t old_size);
+void			*da_memcpy(void *dest, const void *src, size_t n);
 
 //	Static functions
 static size_t	get_growth_factor(size_t length, size_t capacity);
@@ -71,5 +76,5 @@ static size_t	get_growth_factor(size_t length, size_t capacity)
 		}
 		++i;
 	}
-	return ((size_t)((double)capacity * factors[i]));
+	return ((size_t)((float)capacity * factors[i]));
 }

@@ -13,6 +13,8 @@
 #include <sys/param.h>	//	MIN()
 #include "dynarr.h"
 
+void		*da_realloc(void **ptr, size_t new_size, size_t old_size);
+
 //	Static Functions
 static void	*da_memmove(void *dest, const void *src, size_t n);
 
@@ -61,7 +63,7 @@ void	*da_free_ptr(void **ptr)
 	return (NULL);
 }
 
-void	*da_realloc(void **ptr, const size_t new_size, const size_t old_size)
+void	*da_realloc(void **ptr, size_t new_size, size_t old_size)
 {
 	void	*new;
 
